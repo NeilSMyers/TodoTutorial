@@ -34,13 +34,7 @@ class App extends React.Component {
   renderTodos = () => {
     return this.state.todos.map(item => {
       return (
-        <TodoItem
-          key={item[0]}
-          id={item[0]}
-          title={item[1]}
-          done={item[2]}
-          deleteItem={this.deleteItem}
-        />
+        <TodoItem key={item.id} item={item} deleteItem={this.deleteItem} />
       );
     });
   };
@@ -72,7 +66,7 @@ class App extends React.Component {
       .then(
         this.setState({
           todos: this.state.todos.filter(item => {
-            return item[0] !== id;
+            return item.id !== id;
           })
         })
       )
